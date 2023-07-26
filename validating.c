@@ -1,0 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validating.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/19 07:36:40 by otuyishi          #+#    #+#             */
+/*   Updated: 2023/07/25 17:35:19 by otuyishi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+t_list	*create_node_index(int data)
+{
+	t_list	*node;
+
+	node = (t_list *)malloc(sizeof(t_list));
+	if (node)
+	{
+		node->data = data;
+		node->index = 0;
+		node->next = NULL;
+	}
+	return (node);
+}
+
+void	push_back(t_list **head, int data)
+{
+	t_list	*current;
+
+	if (!*head)
+	{
+		*head = create_node_index(data);
+	}
+	else
+	{
+		current = *head;
+		while (current->next)
+			current = current->next;
+		current->next = create_node_index(data);
+	}
+}
