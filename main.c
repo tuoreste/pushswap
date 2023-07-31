@@ -6,7 +6,7 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 07:23:25 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/07/26 19:41:40 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/07/28 11:11:11 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,7 @@
 void	error_exit(void)
 {
 	write(2, "Error\n", 6);
-	exit(EXIT_FAILURE);
-}
-
-void	has_duplicates(t_list *numbers)
-{
-	t_list	*current;
-	t_list	*temp;
-
-	current = numbers;
-	while (current != NULL)
-	{
-		temp = current->next;
-		while (temp != NULL)
-		{
-			if (temp->data == current->data)
-				error_exit();
-			temp = temp->next;
-		}
-		current = current->next;
-	}
-	return ;
+	exit(0);
 }
 
 void	free_list(t_list *head)
@@ -51,7 +31,6 @@ void	free_list(t_list *head)
 		free(temp);
 	}
 }
-
 
 char	*more_args(int argc, char **argv)
 {
@@ -93,9 +72,6 @@ void	fill_stack_a(t_list **stack_a, t_or t)
 			free_list(*stack_a);
 			error_exit();
 		}
-		if ((ft_isdigit(*t.ptr) && (*(t.ptr + 1)) == '-')
-			|| (ft_isdigit(*t.ptr) && (*(t.ptr + 1)) == '+'))
-			error_exit();
 		t.value = parse_int(t.ptr, &t.ptr);
 		if (t.ptr == t.input)
 		{
@@ -107,7 +83,8 @@ void	fill_stack_a(t_list **stack_a, t_or t)
 	}
 	free(t.input);
 }
-int main(int argc, char **argv)
+
+int	main(int argc, char **argv)
 {
 	t_or	t;
 	t_list	*stack_a;
@@ -125,7 +102,7 @@ int main(int argc, char **argv)
 		error_exit();
 	fill_stack_a(&stack_a, t);
 	has_duplicates(stack_a);
-	if (sort_checked(stack_a) && stack_a)
+	if (stack_a && sort_checked(stack_a))
 		return (1);
 	if (!stack_a)
 		error_exit();

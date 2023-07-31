@@ -6,25 +6,11 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 16:23:02 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/07/26 18:12:45 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/07/27 15:24:19 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	sort_checked(t_list *stack)
-{
-	if (stack)
-	{
-		while (stack -> next != NULL)
-		{
-			if (stack -> data > stack -> next -> data)
-				return (0);
-			stack = stack -> next;
-		}
-	}
-	return (1);
-}
 
 void	three_sort(t_list *stack_a)
 {
@@ -53,46 +39,84 @@ void	three_sort(t_list *stack_a)
 	}
 }
 
-int	lower_index(t_list *stack)
+int	find_lowest(t_list **stack, int val)
 {
-	int		lower_x;
-	t_list	*curr;
+	t_list	*head;
+	int		lowest;
 
-	curr = stack->next;
-	lower_x = curr->index;
-	while (curr->next)
+	head = *stack;
+	lowest = head->index;
+	while (head->next)
 	{
-		curr = curr->next;
-		if (curr->index < lower_x)
-			lower_x = curr->index;
+		head = head->next;
+		if ((head->index < lowest) && head->index != val)
+			lowest = head->index;
 	}
-	return (lower_x);
+	return (lowest);
 }
 
-void	seven_sort(t_list *stack_a, t_list *stack_b)
+int	what_size(t_list **stack, int index)
 {
-	int	lower_x;
-	int	i;
-	int	no;
+	t_list	*head;
+	int		size;
 
-	i = 0;
-	no = stack_a->data;
-	while (i++ < no - 3)
+	size = 0;
+	head = *stack;
+	while (head)
 	{
-		lower_x = lower_index(stack_a);
-		if (rotate_count(stack_a->next, lower_x) <= no - lower_x - \
-			rotate_count(stack_a->next, lower_x))
-			while (stack_a->next->index != lower_x)
-				ra(&stack_a);
-		else
-			while (stack_a->next->index != lower_x)
-				rra(&stack_a);
-		if (sort_checked(stack_a) && stack_b->data == 0)
-			return ;
-		pb(&stack_b, &stack_a);
+		if (head->index == index)
+			break ;
+		size++;
+		head = head->next;
 	}
+	return (size);
+}
+
+void	four_sort(t_list *stack_a, t_list *stack_b)
+{
+	int	size;
+
+	if (sort_checked(stack_a))
+		return ;
+	size = what_size(&stack_a, find_lowest(&stack_a, -1));
+	if (size == 1)
+		ra(&stack_a);
+	else if (size == 2)
+	{
+		ra(&stack_a);
+		ra(&stack_a);
+	}
+	else if (size == 3)
+		rra(&stack_a);
+	if (sort_checked(stack_a))
+		return ;
+	pb(&stack_a, &stack_b);
 	three_sort(stack_a);
-	i = 0;
-	while (i++ < no - 3)
-		pa(&stack_a, &stack_b);
+	pa(&stack_a, &stack_b);
+}
+
+void	five_sort(t_list *stack_a, t_list *stack_b)
+{
+	int	size;
+
+	size = what_size(&stack_a, find_lowest(&stack_a, -1));
+	if (size == 1)
+		ra(&stack_a);
+	else if (size == 2)
+	{
+		ra(&stack_a);
+		ra(&stack_a);
+	}
+	else if (size == 3)
+	{
+		rra(&stack_a);
+		rra(&stack_a);
+	}
+	else if (size == 4)
+		rra(&stack_a);
+	if (sort_checked(stack_a))
+		return ;
+	pb(&stack_a, &stack_b);
+	four_sort(stack_a, stack_b);
+	pa(&stack_a, &stack_b);
 }

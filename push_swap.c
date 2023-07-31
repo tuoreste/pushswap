@@ -6,7 +6,7 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 07:23:31 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/07/26 16:59:11 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/07/31 18:05:23 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,10 @@ void	push_swap(t_list **stack_a, t_list **stack_b, int stack_n)
 		sa(stack_a);
 	else if (stack_n == 3)
 		three_sort(*stack_a);
-	else if (stack_n <= 7)
-		seven_sort(*stack_a, *stack_b);
+	else if (stack_n == 4)
+		four_sort(*stack_a, *stack_b);
+	else if (stack_n == 5)
+		five_sort(*stack_a, *stack_b);
 	else
 		rest_sort(*stack_a, *stack_b);
 	return ;

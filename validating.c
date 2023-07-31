@@ -6,11 +6,45 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 07:36:40 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/07/25 17:35:19 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/07/27 13:48:25 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	sort_checked(t_list *stack)
+{
+	if (stack)
+	{
+		while (stack -> next != NULL)
+		{
+			if (stack -> data > stack -> next -> data)
+				return (0);
+			stack = stack -> next;
+		}
+	}
+	return (1);
+}
+
+void	has_duplicates(t_list *numbers)
+{
+	t_list	*current;
+	t_list	*temp;
+
+	current = numbers;
+	while (current != NULL)
+	{
+		temp = current->next;
+		while (temp != NULL)
+		{
+			if (temp->data == current->data)
+				error_exit();
+			temp = temp->next;
+		}
+		current = current->next;
+	}
+	return ;
+}
 
 t_list	*create_node_index(int data)
 {

@@ -6,7 +6,7 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 07:25:25 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/07/26 16:18:29 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/07/31 17:53:18 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct s_or
 {
 	int		i;
 	int		j;
+	int		result;
+	int		sign;
 	int		stack_n;
 	int		value;
 	int		total_length;
@@ -39,7 +41,6 @@ typedef struct s_or
 //main//
 int			main(int argc, char **argv);
 void		free_list(t_list *head);
-void		has_duplicates(t_list *numbers);
 void		index_stack_items(t_list *stack_a, int size);
 void		error_exit(void);
 //Libft//
@@ -54,6 +55,7 @@ char		*ft_strdup(const char *s1);
 char		*ft_strjoin(char const *s1, char const *s2);
 size_t		ft_strlen(const char *str);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
+t_list		*ft_lstnew(void *content);
 //op_push_and_rotation//
 //push
 void		pa(t_list **stack_a, t_list **stack_b);
@@ -80,9 +82,10 @@ int			rotate_count(t_list *str, int index);
 //push_sort
 int			sort_checked(t_list *stack);
 void		three_sort(t_list *stack_a);
-int			lower_index(t_list *stack);
-void		seven_sort(t_list *stack_a, t_list *stack_b);
+void		four_sort(t_list *stack_a, t_list *stack_b);
+void		five_sort(t_list *stack_a, t_list *stack_b);
 //validating//
+void		has_duplicates(t_list *numbers);
 t_list		*create_node_index(int data);
 void		push_back(t_list **head, int data);
 //parse//

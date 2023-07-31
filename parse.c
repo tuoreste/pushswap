@@ -6,24 +6,11 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 09:36:28 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/07/26 19:33:59 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/07/27 10:12:16 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_list	*create_node(int data)
-{
-	t_list	*node;
-
-	node = (t_list *)malloc(sizeof(t_list));
-	if (node)
-	{
-		node->data = data;
-		node->next = NULL;
-	}
-	return (node);
-}
 
 int	is_whitespace(char c)
 {
@@ -38,27 +25,41 @@ char	*skip_whitespace(char *str)
 	return (str);
 }
 
+void	inspect(char *str, t_or t)
+{
+	if (t.result > INT_MAX / 10 \
+	|| (t.result == INT_MAX / 10 && (*str - '0') > INT_MAX % 10))
+		error_exit();
+	if (t.result < INT_MIN / 10 \
+	|| (t.result == INT_MIN / 10 && (*str - '0') > -(INT_MIN % 10)))
+		error_exit();
+}
+
 int	parse_int(char *str, char **endptr)
 {
-	int		result;
-	int		sign;
+	t_or	t;
 
-	result = 0;
-	sign = 1;
+	t.result = 0;
+	t.sign = 1;
 	str = skip_whitespace(str);
 	if (*str == '+' || *str == '-')
 	{
+		if (*(str + 1) == ' ' || *(str + 1) == '\0')
+			error_exit();
 		if (*str == '-')
-			sign = -1;
+			t.sign = -1;
 		str++;
 	}
 	while (*str >= '0' && *str <= '9')
 	{
-		result = result * 10 + (*str - '0');
+		inspect(str, t);
+		t.result = t.result * 10 + (*str - '0');
 		str++;
 	}
+	if (*str == '+' || *str == '-')
+		error_exit();
 	*endptr = str;
-	return (result * sign);
+	return (t.result * t.sign);
 }
 
 void	index_stack_items(t_list *stack_a, int size)
