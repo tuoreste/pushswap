@@ -6,7 +6,7 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 07:25:25 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/07/31 17:53:18 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/08/02 20:48:58 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ typedef struct node
 	int			data;
 	int			index;
 	struct node	*next;
+	struct node	*stack_a;
+	struct node	*stack_b;
 }				t_list;
 
 typedef struct s_or
@@ -56,6 +58,7 @@ char		*ft_strjoin(char const *s1, char const *s2);
 size_t		ft_strlen(const char *str);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 t_list		*ft_lstnew(void *content);
+void		ft_putendl_fd(char *s, int fd);
 //op_push_and_rotation//
 //push
 void		pa(t_list **stack_a, t_list **stack_b);

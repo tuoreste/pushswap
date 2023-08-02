@@ -6,7 +6,7 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 16:23:02 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/07/27 15:24:19 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/08/01 13:43:39 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	three_sort(t_list *stack_a)
 {
+	if (sort_checked(stack_a))
+		return ;
 	if ((stack_a->next->next->data > stack_a->data)
 		&& (stack_a->data > stack_a->next->data))
 		sa(&stack_a);
@@ -100,6 +102,8 @@ void	five_sort(t_list *stack_a, t_list *stack_b)
 	int	size;
 
 	size = what_size(&stack_a, find_lowest(&stack_a, -1));
+	if (sort_checked(stack_a))
+		return ;
 	if (size == 1)
 		ra(&stack_a);
 	else if (size == 2)
@@ -114,8 +118,6 @@ void	five_sort(t_list *stack_a, t_list *stack_b)
 	}
 	else if (size == 4)
 		rra(&stack_a);
-	if (sort_checked(stack_a))
-		return ;
 	pb(&stack_a, &stack_b);
 	four_sort(stack_a, stack_b);
 	pa(&stack_a, &stack_b);

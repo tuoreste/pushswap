@@ -6,7 +6,7 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 07:23:25 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/07/28 11:11:11 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/08/02 21:07:49 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error_exit(void)
 {
-	write(2, "Error\n", 6);
+	ft_putendl_fd("Error", STDERR_FILENO);
 	exit(0);
 }
 
@@ -87,11 +87,10 @@ void	fill_stack_a(t_list **stack_a, t_or t)
 int	main(int argc, char **argv)
 {
 	t_or	t;
-	t_list	*stack_a;
-	t_list	*stack_b;
+	t_list	l;
 
-	stack_a = NULL;
-	stack_b = NULL;
+	l.stack_a = NULL;
+	l.stack_b = NULL;
 	if (argc < 2)
 		error_exit();
 	else if (argc == 2)
@@ -100,16 +99,16 @@ int	main(int argc, char **argv)
 		t.input = more_args(argc, argv);
 	if (!t.input)
 		error_exit();
-	fill_stack_a(&stack_a, t);
-	has_duplicates(stack_a);
-	if (stack_a && sort_checked(stack_a))
+	fill_stack_a(&l.stack_a, t);
+	has_duplicates(l.stack_a);
+	if (l.stack_a && sort_checked(l.stack_a))
 		return (1);
-	if (!stack_a)
+	if (!l.stack_a)
 		error_exit();
-	t.stack_n = ft_lstsize(stack_a);
-	index_stack_items(stack_a, t.stack_n);
-	push_swap(&stack_a, &stack_b, t.stack_n);
-	free_list(stack_a);
-	free_list(stack_b);
+	t.stack_n = ft_lstsize(l.stack_a);
+	index_stack_items(l.stack_a, t.stack_n);
+	push_swap(&l.stack_a, &l.stack_b, t.stack_n);
+	free_list(l.stack_a);
+	free_list(l.stack_b);
 	return (0);
 }

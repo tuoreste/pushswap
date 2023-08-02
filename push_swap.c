@@ -6,7 +6,7 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 07:23:31 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/07/31 18:05:23 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/08/02 21:18:09 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	switch_to_a(t_list **stack_a, t_list **stack_b, int len)
 			while ((*stack_b)->index != len)
 				rb(stack_b);
 		}
-		pb(stack_b, stack_a);
+		pa(stack_b, stack_a);
 	}
 }
 
@@ -66,11 +66,13 @@ void	rest_sort(t_list *stack_a, t_list *stack_b)
 	i = 0;
 	len = ft_lstsize(stack_a);
 	hold = near_sqr_to_no(len) * 1.41;
+	if (sort_checked(stack_a))
+		return ;
 	while (stack_a)
 	{
 		if ((stack_a)->index <= hold + i)
 		{
-			pa(&stack_a, &stack_b);
+			pb(&stack_a, &stack_b);
 			if ((stack_b)->index <= i++)
 				rb(&stack_b);
 		}
