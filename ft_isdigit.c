@@ -6,13 +6,13 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 09:35:39 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/07/26 11:50:27 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/08/05 11:24:10 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_isdigit(int c)
+int	ft_isdigit(long long c)
 {
 	return (c >= 48 && c <= 57);
 }

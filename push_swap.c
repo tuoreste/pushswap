@@ -6,15 +6,15 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 07:23:31 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/08/02 21:18:09 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/08/06 23:01:45 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	rotate_count(t_list *str, int index)
+long long	rotate_count(t_list *str, int index)
 {
-	int	no;
+	long long	no;
 
 	no = 0;
 	while (str && str->index != index)
@@ -25,7 +25,7 @@ int	rotate_count(t_list *str, int index)
 	return (no);
 }
 
-int	near_sqr_to_no(int no)
+long long	near_sqr_to_no(int no)
 {
 	int	i;
 
@@ -53,33 +53,33 @@ void	switch_to_a(t_list **stack_a, t_list **stack_b, int len)
 			while ((*stack_b)->index != len)
 				rb(stack_b);
 		}
-		pa(stack_b, stack_a);
+		pa(stack_a, stack_b);
 	}
 }
 
-void	rest_sort(t_list *stack_a, t_list *stack_b)
+void	rest_sort(t_list **stack_a, t_list **stack_b)
 {
-	int	i;
-	int	len;
-	int	hold;
+	int			i;
+	int			len;
+	long long	hold;
 
 	i = 0;
-	len = ft_lstsize(stack_a);
+	len = ft_lstsize(*stack_a);
 	hold = near_sqr_to_no(len) * 1.41;
-	if (sort_checked(stack_a))
+	if (sort_checked(*stack_a))
 		return ;
-	while (stack_a)
+	while (*stack_a)
 	{
-		if ((stack_a)->index <= hold + i)
+		if ((*stack_a)->index <= hold + i)
 		{
-			pb(&stack_a, &stack_b);
-			if ((stack_b)->index <= i++)
-				rb(&stack_b);
+			pb(stack_b, stack_a);
+			if ((*stack_b)->index <= i++)
+				rb(stack_b);
 		}
 		else
-			ra(&stack_a);
+			ra(stack_a);
 	}
-	switch_to_a(&stack_a, &stack_b, len);
+	switch_to_a(stack_a, stack_b, len);
 }
 
 void	push_swap(t_list **stack_a, t_list **stack_b, int stack_n)
@@ -89,12 +89,12 @@ void	push_swap(t_list **stack_a, t_list **stack_b, int stack_n)
 	if (stack_n == 2 && !sort_checked(*stack_a))
 		sa(stack_a);
 	else if (stack_n == 3)
-		three_sort(*stack_a);
+		three_sort(stack_a);
 	else if (stack_n == 4)
-		four_sort(*stack_a, *stack_b);
+		four_sort(stack_a, stack_b);
 	else if (stack_n == 5)
-		five_sort(*stack_a, *stack_b);
+		five_sort(stack_a, stack_b);
 	else
-		rest_sort(*stack_a, *stack_b);
+		rest_sort(stack_a, stack_b);
 	return ;
 }

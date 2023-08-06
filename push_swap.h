@@ -6,39 +6,38 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 07:25:25 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/08/02 20:48:58 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/08/06 23:19:41 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-# include <limits.h>
 
 typedef struct node
 {
-	int			data;
+	long long	data;
 	int			index;
 	struct node	*next;
-	struct node	*stack_a;
-	struct node	*stack_b;
 }				t_list;
 
 typedef struct s_or
 {
-	int		i;
-	int		j;
-	int		result;
-	int		sign;
-	int		stack_n;
-	int		value;
-	int		total_length;
-	int		pos;
-	char	*input;
-	char	*ptr;
-}			t_or;
+	int			i;
+	int			j;
+	long long	result;
+	int			sign;
+	int			stack_n;
+	int			pos;
+	char		*input;
+	char		*ptr;
+	long		res;
+	char		*endptr;
+}				t_or;
 
 //main//
 int			main(int argc, char **argv);
@@ -46,9 +45,9 @@ void		free_list(t_list *head);
 void		index_stack_items(t_list *stack_a, int size);
 void		error_exit(void);
 //Libft//
-int			ft_atoi(const char *str);
-int			ft_isdigit(int c);
-void		ft_lstadd_front(t_list **lst, t_list *new);
+long long	ft_atoi(const char *str);
+int			ft_isdigit(long long c);
+void		ft_lstadd_front(t_list **lst, t_list *neww);
 t_list		*ft_lstlast(t_list *lst);
 int			ft_lstsize(t_list *lst);
 void		*ft_memcpy(void *dst, const void *src, size_t n);
@@ -77,24 +76,24 @@ void		sa(t_list **stack);
 void		sb(t_list **stack);
 void		ss(t_list **stack_a, t_list **stack_b);
 //push_swap//
-void		rest_sort(t_list *stack_a, t_list *stack_b);
+void		rest_sort(t_list **stack_a, t_list **stack_b);
 void		switch_to_a(t_list **stack_a, t_list **stack_b, int len);
 void		push_swap(t_list **stack_a, t_list **stack_b, int stack_n);
-int			near_sqr_to_no(int no);
-int			rotate_count(t_list *str, int index);
+long long	near_sqr_to_no(int no);
+long long	rotate_count(t_list *str, int index);
 //push_sort
 int			sort_checked(t_list *stack);
-void		three_sort(t_list *stack_a);
-void		four_sort(t_list *stack_a, t_list *stack_b);
-void		five_sort(t_list *stack_a, t_list *stack_b);
+void		three_sort(t_list **stack_a);
+void		four_sort(t_list **stack_a, t_list **stack_b);
+void		five_sort(t_list **stack_a, t_list **stack_b);
 //validating//
 void		has_duplicates(t_list *numbers);
-t_list		*create_node_index(int data);
-void		push_back(t_list **head, int data);
+t_list		*create_node_index(long data);
+void		push_back(t_list **head, long data);
 //parse//
 int			is_whitespace(char c);
 char		*skip_whitespace(char *str);
-int			parse_int(char *str, char **endptr);
+long long	parse_int(char *str);
 void		index_stack_items(t_list *stack_a, int size);
 
 #endif

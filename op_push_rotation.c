@@ -6,7 +6,7 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 18:54:56 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/07/25 16:48:07 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/08/06 23:24:46 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	pa(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*temp;
 
-	if (*stack_a != NULL)
+	if (*stack_b != NULL)
 	{
-		temp = *stack_a;
-		*stack_a = (*stack_a)-> next;
-		ft_lstadd_front(stack_b, temp);
+		temp = *stack_b;
+		*stack_b = (*stack_b)-> next;
+		ft_lstadd_front(stack_a, temp);
 	}
 	write(1, "pa\n", 3);
 }
@@ -29,11 +29,11 @@ void	pb(t_list **stack_b, t_list **stack_a)
 {
 	t_list	*temp;
 
-	if (*stack_b != NULL)
+	if (*stack_a != NULL)
 	{
-		temp = *stack_b;
-		*stack_b = (*stack_b)-> next;
-		ft_lstadd_front(stack_a, temp);
+		temp = *stack_a;
+		*stack_a = (*stack_a)-> next;
+		ft_lstadd_front(stack_b, temp);
 	}
 	write(1, "pb\n", 3);
 }

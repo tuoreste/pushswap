@@ -6,7 +6,7 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 14:57:47 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/07/26 11:50:58 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/08/06 18:41:10 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		count3++;
 	}
 	c_s[count2] = 0;
+	free((void *) s1);
 	return (c_s);
 }

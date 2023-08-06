@@ -6,16 +6,16 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 12:47:34 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/08/02 19:00:23 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/08/05 11:21:31 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
-	int	the_sign;
-	int	the_integer;
+	int		the_sign;
+	long	the_integer;
 
 	the_sign = 1;
 	the_integer = 0;

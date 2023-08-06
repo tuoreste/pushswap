@@ -6,11 +6,26 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 07:36:40 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/08/02 16:53:31 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/08/06 23:22:55 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	free_list(t_list *stack)
+{
+	t_list	*tmp;
+
+	if (!stack)
+		return ;
+	while (stack)
+	{
+		tmp = stack;
+		free(tmp);
+		stack = stack->next;
+	}
+	stack = NULL;
+}
 
 int	sort_checked(t_list *stack)
 {
@@ -46,7 +61,7 @@ void	has_duplicates(t_list *numbers)
 	return ;
 }
 
-t_list	*create_node_index(int data)
+t_list	*create_node_index(long data)
 {
 	t_list	*node;
 
@@ -60,7 +75,7 @@ t_list	*create_node_index(int data)
 	return (node);
 }
 
-void	push_back(t_list **head, int data)
+void	push_back(t_list **head, long data)
 {
 	t_list	*current;
 

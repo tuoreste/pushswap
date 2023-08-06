@@ -6,38 +6,38 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 16:23:02 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/08/01 13:43:39 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/08/06 23:16:40 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	three_sort(t_list *stack_a)
+void	three_sort(t_list **stack_a)
 {
-	if (sort_checked(stack_a))
+	if (sort_checked(*stack_a))
 		return ;
-	if ((stack_a->next->next->data > stack_a->data)
-		&& (stack_a->data > stack_a->next->data))
-		sa(&stack_a);
-	if (stack_a->data > stack_a->next->data)
+	if (((*stack_a)->next->next->data > (*stack_a)->data)
+		&& ((*stack_a)->data > (*stack_a)->next->data))
+		sa(stack_a);
+	if ((*stack_a)->data > (*stack_a)->next->data)
 	{
-		if (stack_a->next->data > stack_a->next->next->data)
+		if ((*stack_a)->next->data > (*stack_a)->next->next->data)
 		{
-			sa(&stack_a);
-			rra(&stack_a);
+			sa(stack_a);
+			rra(stack_a);
 		}
 		else
-			ra(&stack_a);
+			ra(stack_a);
 	}
-	if (stack_a->next->data > stack_a->next->next->data)
+	if ((*stack_a)->next->data > (*stack_a)->next->next->data)
 	{
-		if (stack_a->next->next->data > stack_a->data)
+		if ((*stack_a)->next->next->data > (*stack_a)->data)
 		{
-			sa(&stack_a);
-			ra(&stack_a);
+			sa(stack_a);
+			ra(stack_a);
 		}
 		else
-			rra(&stack_a);
+			rra(stack_a);
 	}
 }
 
@@ -74,51 +74,51 @@ int	what_size(t_list **stack, int index)
 	return (size);
 }
 
-void	four_sort(t_list *stack_a, t_list *stack_b)
+void	four_sort(t_list **stack_a, t_list **stack_b)
 {
 	int	size;
 
-	if (sort_checked(stack_a))
+	if (sort_checked(*stack_a))
 		return ;
-	size = what_size(&stack_a, find_lowest(&stack_a, -1));
+	size = what_size(stack_a, find_lowest(stack_a, -1));
 	if (size == 1)
-		ra(&stack_a);
+		ra(stack_a);
 	else if (size == 2)
 	{
-		ra(&stack_a);
-		ra(&stack_a);
+		ra(stack_a);
+		ra(stack_a);
 	}
 	else if (size == 3)
-		rra(&stack_a);
-	if (sort_checked(stack_a))
+		rra(stack_a);
+	if (sort_checked(*stack_a))
 		return ;
-	pb(&stack_a, &stack_b);
+	pb(stack_b, stack_a);
 	three_sort(stack_a);
-	pa(&stack_a, &stack_b);
+	pa(stack_a, stack_b);
 }
 
-void	five_sort(t_list *stack_a, t_list *stack_b)
+void	five_sort(t_list **stack_a, t_list **stack_b)
 {
 	int	size;
 
-	size = what_size(&stack_a, find_lowest(&stack_a, -1));
-	if (sort_checked(stack_a))
+	size = what_size(stack_a, find_lowest(stack_a, -1));
+	if (sort_checked(*stack_a))
 		return ;
 	if (size == 1)
-		ra(&stack_a);
+		ra(stack_a);
 	else if (size == 2)
 	{
-		ra(&stack_a);
-		ra(&stack_a);
+		ra(stack_a);
+		ra(stack_a);
 	}
 	else if (size == 3)
 	{
-		rra(&stack_a);
-		rra(&stack_a);
+		rra(stack_a);
+		rra(stack_a);
 	}
 	else if (size == 4)
-		rra(&stack_a);
-	pb(&stack_a, &stack_b);
+		rra(stack_a);
+	pb(stack_b, stack_a);
 	four_sort(stack_a, stack_b);
-	pa(&stack_a, &stack_b);
+	pa(stack_a, stack_b);
 }
