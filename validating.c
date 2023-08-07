@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 07:36:40 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/08/06 23:22:55 by otuyishi         ###   ########.fr       */
+/*   Created: 2023/08/07 13:09:12 by otuyishi          #+#    #+#             */
+/*   Updated: 2023/08/07 14:12:07 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	free_list(t_list *stack)
 	while (stack)
 	{
 		tmp = stack;
-		free(tmp);
 		stack = stack->next;
+		free(tmp);
 	}
 	stack = NULL;
 }
@@ -33,7 +33,7 @@ int	sort_checked(t_list *stack)
 	{
 		while (stack -> next != NULL)
 		{
-			if (stack -> data > stack -> next -> data)
+			if (stack -> data > stack -> next-> data)
 				return (0);
 			stack = stack -> next;
 		}
@@ -49,14 +49,14 @@ void	has_duplicates(t_list *numbers)
 	current = numbers;
 	while (current != NULL)
 	{
-		temp = current->next;
+		temp = current -> next;
 		while (temp != NULL)
 		{
-			if (temp->data == current->data)
+			if (temp -> data == current -> data)
 				error_exit();
-			temp = temp->next;
+			temp = temp -> next;
 		}
-		current = current->next;
+		current = current -> next;
 	}
 	return ;
 }
@@ -68,9 +68,9 @@ t_list	*create_node_index(long data)
 	node = (t_list *)malloc(sizeof(t_list));
 	if (node)
 	{
-		node->data = data;
-		node->index = 0;
-		node->next = NULL;
+		node -> data = data;
+		node -> index = 0;
+		node -> next = NULL;
 	}
 	return (node);
 }
@@ -80,14 +80,12 @@ void	push_back(t_list **head, long data)
 	t_list	*current;
 
 	if (!*head)
-	{
 		*head = create_node_index(data);
-	}
 	else
 	{
 		current = *head;
-		while (current->next)
-			current = current->next;
-		current->next = create_node_index(data);
+		while (current -> next)
+			current = current -> next;
+		current -> next = create_node_index(data);
 	}
 }

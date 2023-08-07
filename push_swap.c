@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/03 07:23:31 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/08/06 23:01:45 by otuyishi         ###   ########.fr       */
+/*   Created: 2023/08/07 12:47:04 by otuyishi          #+#    #+#             */
+/*   Updated: 2023/08/07 14:00:21 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ long long	rotate_count(t_list *str, int index)
 	long long	no;
 
 	no = 0;
-	while (str && str->index != index)
+	while (str && str -> index != index)
 	{
-		str = str->next;
+		str = str -> next;
 		no++;
 	}
 	return (no);
@@ -45,7 +45,7 @@ void	switch_to_a(t_list **stack_a, t_list **stack_b, int len)
 		i = rotate_count(*stack_b, len);
 		if (2 * i > len)
 		{
-			while ((*stack_b)->index != len)
+			while ((*stack_b)-> index != len)
 				rrb(stack_b);
 		}
 		else
@@ -73,7 +73,7 @@ void	rest_sort(t_list **stack_a, t_list **stack_b)
 		if ((*stack_a)->index <= hold + i)
 		{
 			pb(stack_b, stack_a);
-			if ((*stack_b)->index <= i++)
+			if ((*stack_b)-> index <= i++)
 				rb(stack_b);
 		}
 		else

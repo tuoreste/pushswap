@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 16:23:02 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/08/06 23:16:40 by otuyishi         ###   ########.fr       */
+/*   Created: 2023/08/07 11:47:22 by otuyishi          #+#    #+#             */
+/*   Updated: 2023/08/07 13:56:25 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ void	three_sort(t_list **stack_a)
 {
 	if (sort_checked(*stack_a))
 		return ;
-	if (((*stack_a)->next->next->data > (*stack_a)->data)
+	if (((*stack_a)-> next->next->data > (*stack_a)->data)
 		&& ((*stack_a)->data > (*stack_a)->next->data))
 		sa(stack_a);
 	if ((*stack_a)->data > (*stack_a)->next->data)
 	{
-		if ((*stack_a)->next->data > (*stack_a)->next->next->data)
+		if ((*stack_a)->next->data > (*stack_a)-> next->next->data)
 		{
 			sa(stack_a);
 			rra(stack_a);
@@ -29,7 +29,7 @@ void	three_sort(t_list **stack_a)
 		else
 			ra(stack_a);
 	}
-	if ((*stack_a)->next->data > (*stack_a)->next->next->data)
+	if ((*stack_a)->next->data > (*stack_a)-> next -> next -> data)
 	{
 		if ((*stack_a)->next->next->data > (*stack_a)->data)
 		{
@@ -47,12 +47,12 @@ int	find_lowest(t_list **stack, int val)
 	int		lowest;
 
 	head = *stack;
-	lowest = head->index;
-	while (head->next)
+	lowest = head -> index;
+	while (head -> next)
 	{
-		head = head->next;
-		if ((head->index < lowest) && head->index != val)
-			lowest = head->index;
+		head = head -> next;
+		if ((head -> index < lowest) && head -> index != val)
+			lowest = head -> index;
 	}
 	return (lowest);
 }
@@ -66,10 +66,10 @@ int	what_size(t_list **stack, int index)
 	head = *stack;
 	while (head)
 	{
-		if (head->index == index)
+		if (head -> index == index)
 			break ;
 		size++;
-		head = head->next;
+		head = head -> next;
 	}
 	return (size);
 }

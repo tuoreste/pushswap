@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/22 18:54:56 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/08/06 23:24:46 by otuyishi         ###   ########.fr       */
+/*   Created: 2023/08/07 10:57:55 by otuyishi          #+#    #+#             */
+/*   Updated: 2023/08/07 11:11:48 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	pa(t_list **stack_a, t_list **stack_b)
 		*stack_b = (*stack_b)-> next;
 		ft_lstadd_front(stack_a, temp);
 	}
-	write(1, "pa\n", 3);
+	write(1, "pa\na", 3);
 }
 
 void	pb(t_list **stack_b, t_list **stack_a)
@@ -38,7 +38,6 @@ void	pb(t_list **stack_b, t_list **stack_a)
 	write(1, "pb\n", 3);
 }
 
-//rotation a
 void	ra(t_list **stack)
 {
 	t_list	*old_top;
@@ -47,7 +46,7 @@ void	ra(t_list **stack)
 	if (*stack == NULL || (*stack)-> next == NULL)
 		return ;
 	old_top = *stack;
-	*stack = old_top ->next;
+	*stack = old_top -> next;
 	old_top -> next = NULL;
 	lst = ft_lstlast(*stack);
 	lst -> next = old_top;
@@ -62,14 +61,13 @@ void	rb(t_list **stack)
 	if (*stack == NULL || (*stack)-> next == NULL)
 		return ;
 	old_top = *stack;
-	*stack = old_top ->next;
+	*stack = old_top -> next;
 	old_top -> next = NULL;
 	lst = ft_lstlast(*stack);
 	lst -> next = old_top;
 	write(1, "rb\n", 3);
 }
 
-//rotation both a and b
 void	rr(t_list **stack_a, t_list **stack_b)
 {
 	ra(stack_a);

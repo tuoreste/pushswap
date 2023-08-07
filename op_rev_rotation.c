@@ -5,14 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 08:29:18 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/08/06 21:29:39 by otuyishi         ###   ########.fr       */
+/*   Created: 2023/08/07 11:12:25 by otuyishi          #+#    #+#             */
+/*   Updated: 2023/08/07 13:34:20 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//reverse_rotate a
 void	rra(t_list **stack)
 {
 	t_list	*last;
@@ -30,7 +29,6 @@ void	rra(t_list **stack)
 	write(1, "rra\n", 4);
 }
 
-//reverse_rotate b
 void	rrb(t_list **stack)
 {
 	t_list	*last;
@@ -48,7 +46,6 @@ void	rrb(t_list **stack)
 	write(1, "rrb\n", 4);
 }
 
-//reverse_rotate both a and b
 void	rrr(t_list **stack_a, t_list **stack_b)
 {
 	rra(stack_a);

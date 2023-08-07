@@ -6,7 +6,7 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 11:37:30 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/08/06 13:24:27 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/07/26 11:50:49 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	ft_number_of_words(char const *str, char c)
 	return (count);
 }
 
-static void	free_alll(char **word)
+static void	free_all(char **word)
 {
 	int	i;
 
@@ -63,7 +63,7 @@ static int	ft_split_loop(char const *str, char c, char **word)
 			word[iter] = ft_substr(str - len, 0, len);
 			if (!word[iter])
 			{
-				free_alll(word);
+				free_all(word);
 				return (0);
 			}
 			++iter;

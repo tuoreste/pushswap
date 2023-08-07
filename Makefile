@@ -6,7 +6,7 @@
 #    By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/03 07:25:04 by otuyishi          #+#    #+#              #
-#    Updated: 2023/08/06 23:17:23 by otuyishi         ###   ########.fr        #
+#    Updated: 2023/08/07 14:06:44 by otuyishi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME = push_swap
 
 # Compiler and flags
 CC = gcc
-CFLAGS =  -Wall -Wextra -Werror
+CFLAGS =  -Wall -Wextra -Werror -fsanitize=address -g
 
 # Source files and object files
 SRC = main.c push_swap.c op_push_rotation.c op_rev_rotation.c op_swap.c push_sort.c validating.c parse.c \

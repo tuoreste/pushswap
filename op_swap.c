@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/03 20:26:13 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/08/06 21:29:59 by otuyishi         ###   ########.fr       */
+/*   Created: 2023/08/07 11:17:17 by otuyishi          #+#    #+#             */
+/*   Updated: 2023/08/07 13:37:21 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,33 +26,33 @@ t_list	*pop(t_list **stack)
 
 void	sa(t_list **stack)
 {
-	t_list	*first_elem;
-	t_list	*second_elem;
+	t_list	*elem_a;
+	t_list	*elem_b;
 
 	if (*stack == NULL || (*stack)-> next == NULL)
 		return ;
-	first_elem = pop(stack);
-	second_elem = pop(stack);
-	ft_lstadd_front(stack, first_elem);
-	ft_lstadd_front(stack, second_elem);
+	elem_a = pop(stack);
+	elem_b = pop(stack);
+	ft_lstadd_front(stack, elem_a);
+	ft_lstadd_front(stack, elem_b);
 	write(1, "sa\n", 3);
 }
 
 void	sb(t_list **stack)
 {
-	t_list	*first_elem;
-	t_list	*second_elem;
+	t_list	*elem_a;
+	t_list	*elem_b;
 
 	if (*stack == NULL || (*stack)-> next == NULL)
 		return ;
-	first_elem = pop(stack);
-	second_elem = pop(stack);
-	ft_lstadd_front(stack, first_elem);
-	ft_lstadd_front(stack, second_elem);
+	elem_a = pop(stack);
+	elem_b = pop(stack);
+	ft_lstadd_front(stack, elem_a);
+	ft_lstadd_front(stack, elem_b);
 	write(1, "sb\n", 3);
 }
 
-void	ss(t_list **stack_a, t_list **stack_b)
+void	ss(t_list	**stack_a, t_list	**stack_b)
 {
 	sa(stack_a);
 	sb(stack_b);

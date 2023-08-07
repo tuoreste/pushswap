@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/03 07:25:25 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/08/06 23:19:41 by otuyishi         ###   ########.fr       */
+/*   Created: 2023/08/02 14:05:07 by otuyishi          #+#    #+#             */
+/*   Updated: 2023/08/07 14:45:56 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct s_or
 
 //main//
 int			main(int argc, char **argv);
+char		**args_receiver(int arc, char **arv);
+void		index_swap_free(t_list *stack_a, t_list *stack_b);
 void		free_list(t_list *head);
 void		index_stack_items(t_list *stack_a, int size);
 void		error_exit(void);

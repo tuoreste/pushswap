@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/25 09:36:28 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/08/06 21:07:12 by otuyishi         ###   ########.fr       */
+/*   Created: 2023/08/07 11:28:15 by otuyishi          #+#    #+#             */
+/*   Updated: 2023/08/07 14:53:25 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,23 @@ void	index_stack_items(t_list *stack_a, int size)
 		end = NULL;
 		while (ptr != NULL)
 		{
-			if (ptr->data == INT_MIN && ptr->index == 0)
-				ptr->index = 0;
-			if (ptr->data > data && ptr->index == 0)
+			if (ptr -> data == INT_MIN && ptr -> index == 0)
+				ptr -> index = 0;
+			if (ptr -> data > data && ptr -> index == 0)
 			{
-				data = ptr->data;
+				data = ptr -> data;
 				end = ptr;
 			}
-			ptr = ptr->next;
+			ptr = ptr -> next;
 		}
 		if (end != NULL)
-			end->index = size;
+			end -> index = size;
 	}
 }
 
-void	is_digit(char	*str)
+void	is_digit(char *str)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (str[i])

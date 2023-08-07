@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/27 12:47:34 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/08/05 11:21:31 by otuyishi         ###   ########.fr       */
+/*   Created: 2023/08/02 14:05:39 by otuyishi          #+#    #+#             */
+/*   Updated: 2023/08/07 14:53:07 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 long long	ft_atoi(const char *str)
 {
-	int		the_sign;
-	long	the_integer;
+	long long	the_sign;
+	long long	the_integer;
 
 	the_sign = 1;
 	the_integer = 0;

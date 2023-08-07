@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/03 07:23:25 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/08/06 23:21:12 by otuyishi         ###   ########.fr       */
+/*   Created: 2023/08/02 14:07:49 by otuyishi          #+#    #+#             */
+/*   Updated: 2023/08/07 14:47:35 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	error_exit(void)
 {
 	ft_putendl_fd("Error", STDERR_FILENO);
-	exit(1);
+	exit(0);
 }
 
 void	free_str_arr(char **arr)
@@ -34,7 +34,7 @@ void	free_str_arr(char **arr)
 	}
 }
 
-char	**arguments(int arc, char **arv)
+char	**args_receiver(int arc, char **arv)
 {
 	t_or	t;
 	char	**splitted;
@@ -57,7 +57,7 @@ char	**arguments(int arc, char **arv)
 	return (splitted);
 }
 
-void	finally(t_list *stack_a, t_list *stack_b)
+void	index_swap_free(t_list *stack_a, t_list *stack_b)
 {
 	t_or	t;
 
@@ -79,7 +79,7 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (argc < 2)
 		error_exit();
-	splitted = arguments(argc, argv);
+	splitted = args_receiver(argc, argv);
 	while (splitted[t.i])
 	{
 		t.endptr = splitted[t.i++];
@@ -92,6 +92,6 @@ int	main(int argc, char **argv)
 		return (1);
 	if (!stack_a)
 		error_exit();
-	finally(stack_a, stack_b);
+	index_swap_free(stack_a, stack_b);
 	return (0);
 }
