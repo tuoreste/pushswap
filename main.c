@@ -6,7 +6,7 @@
 /*   By: otuyishi <otuyishi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 14:07:49 by otuyishi          #+#    #+#             */
-/*   Updated: 2023/08/07 14:47:35 by otuyishi         ###   ########.fr       */
+/*   Updated: 2023/08/08 09:47:38 by otuyishi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2)
-		error_exit();
+		return (0);
 	splitted = args_receiver(argc, argv);
 	while (splitted[t.i])
 	{
@@ -89,7 +89,7 @@ int	main(int argc, char **argv)
 	}
 	free_str_arr(splitted);
 	if (stack_a && sort_checked(stack_a))
-		return (1);
+		return (0);
 	if (!stack_a)
 		error_exit();
 	index_swap_free(stack_a, stack_b);
