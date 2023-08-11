@@ -67,6 +67,7 @@ void	index_swap_free(t_list *stack_a, t_list *stack_b)
 	free_list(stack_a);
 }
 
+//main
 int	main(int argc, char **argv)
 {
 	t_or	t;
