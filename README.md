@@ -70,7 +70,7 @@ The program will output the series of operations needed to sort the stack.
 
 ## OR you can run the following simplest
 
-'git clone https://github.com/tuoreste/pushswap.git && cd pushswap && make && ./push_swap 3 2 5 1 4'
+'''git clone https://github.com/tuoreste/pushswap.git && cd pushswap && make && ./push_swap 3 2 5 1 4'''
 
 ## Example
 
