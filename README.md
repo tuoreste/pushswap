@@ -32,15 +32,32 @@ For small sets of numbers (2, 3, 4, and 5), a manual sorting approach is used:
 3. **Four Numbers**: Push the smallest element to stack_b, sort the remaining three in stack_a, then push the smallest element back to stack_a.
 4. **Five Numbers**: Similar to four numbers, but push the two smallest elements to stack_b, sort the remaining three in stack_a, then push the two smallest elements back to stack_a in the correct order.
 
-### Algorithm for Larger Sets
+## Algorithm for Larger Sets
 
-For larger sets of numbers, the following algorithm is used:
+For larger sets of numbers, a systematic approach is employed to efficiently sort them using the two-stack structure. Here’s a step-by-step explanation of the algorithm:
 
-1. **Rotate Count Function**: Calculates the number of rotations needed to bring a specific index to the top of the stack.
+### Step 1: Divide and Conquer with `stack_b`
 
-2. **Near Square Root Function**: Calculates the largest integer whose square is less than the given number.
+1. **Push Elements to `stack_b`**: Begin by transferring elements from `stack_a` to `stack_b` based on a specific criterion (e.g., median value). This helps in dividing the elements into two manageable groups.
 
-3. **Switch to A Function**: Moves elements from `stack_b` to `stack_a` in sorted order. It calculates the optimal rotations needed and performs the appropriate push and rotate operations.
+### Step 2: Utilizing Helper Functions
+
+2. **Rotate Count Function**: Calculate the number of rotations needed to bring a specific index to the top of a stack (`rotate_count` function). This function aids in efficiently managing the movement of elements within the stacks.
+
+3. **Near Square Root Function**: Determine the optimal size of subgroups by finding the largest integer whose square is less than a given number (`near_sqr_to_no` function). This function assists in grouping elements effectively for sorting.
+
+### Step 3: Sorting and Returning to `stack_a`
+
+4. **Switch to A Function**: Sort elements in `stack_b` and push them back to `stack_a` in the correct order. This function calculates the optimal rotations needed and performs the necessary push and rotate operations (`switch_to_a` function).
+
+### Example Workflow
+
+To illustrate the sorting process:
+- Start with an unsorted set of numbers in `stack_a`.
+- Divide the elements by pushing them to `stack_b` based on a pivot value.
+- Sort and return elements to `stack_a` using optimal rotations calculated by helper functions.
+
+This systematic approach ensures that larger sets of numbers are sorted efficiently using a combination of stack operations and optimized movement strategies.
 
 ## Data Structures
 
